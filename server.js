@@ -23,7 +23,7 @@ function add_search(searchTerm) {
 }
 
 server.listen(process.env.PORT, process.env.IP);
-server.use(express.static('view'));
+server.use('/', express.static('view'));
 
 server.get('/recent', function(req,res) {
   mongoClient.connect(dbUrl, function(err, db) {
@@ -36,7 +36,10 @@ server.get('/recent', function(req,res) {
   });
  
 });
-
+//ignore favicon.ico requests
+server.get('/favicon.ico', function(req, res) {
+    res.sendStatus(200);
+});
 server.get('/:searchQuery', function(req, res) {
   var query = req.params.searchQuery;
   var offset = req.query.offset || 1;

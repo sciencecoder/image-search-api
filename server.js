@@ -22,7 +22,7 @@ function add_search(searchTerm) {
   
 }
 
-server.listen(process.env.PORT || 3000, process.env.IP);
+server.listen(process.env.PORT, process.env.IP);
 server.use(express.static('view'));
 
 server.get('/recent', function(req,res) {

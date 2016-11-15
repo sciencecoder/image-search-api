@@ -4,7 +4,7 @@ var mongoClient = require('mongodb').MongoClient;
 var server = express();
 var googleApiKey = 'My_API Key';
 var cx = 'My_search_engine_context';
-var dbUrl = 'mongodb://user:admin@ds149437.mlab.com:49437/recent_searches'
+var dbUrl = 'My_DB_URL';
 
 function add_search(searchTerm) {
   mongoClient.connect(dbUrl, function(err, db) {

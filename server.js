@@ -2,7 +2,8 @@ var express = require('express');
 var https = require('https');
 var mongoClient = require('mongodb').MongoClient;
 var server = express();
-var googleApiKey = 'AIzaSyBa0jdjdncRl_eWWK2Na_JtWXA1UhOlxsA';
+var googleApiKey = 'My_API Key;
+var cx = 'My_search_engine_context';
 var dbUrl = 'mongodb://user:admin@ds149437.mlab.com:49437/recent_searches'
 
 function add_search(searchTerm) {
@@ -43,7 +44,7 @@ server.get('/favicon.ico', function(req, res) {
 server.get('/:searchQuery', function(req, res) {
   var query = req.params.searchQuery;
   var offset = req.query.offset || 1;
-  var googleApiUrl = 'https://www.googleapis.com/customsearch/v1?key=' +  googleApiKey + '&cx=017774474405353238606:lq5zuipvaj8&searchType=image&num=5&start=' + offset  + '&q=' + query;
+  var googleApiUrl = 'https://www.googleapis.com/customsearch/v1?key=' +  googleApiKey + '&cx=' + cx + '&searchType=image&num=5&start=' + offset  + '&q=' + query;
   var obj = '';
   add_search(query);
   https.get(googleApiUrl, function(request) {
